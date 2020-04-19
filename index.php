@@ -45,11 +45,11 @@
                 Submit
             </button>
             
-            <?php if($_QUERY['success'] === 'true'): ?>
+            <?php if($_GET['success'] === 'true'): ?>
             <div class="alert alert-success" role="alert">
                 File uploaded successfully
             </div>
-            <?php elseif($_QUERY['success'] === 'false'): ?>
+            <?php elseif($_GET['success'] === 'false'): ?>
             <div class="alert alert-danger" role="alert">
                 Failed to upload file
             </div>
