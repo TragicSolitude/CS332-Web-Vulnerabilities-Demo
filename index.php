@@ -8,36 +8,55 @@
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
             crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Demo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">File Upload <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Other</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Demo</a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">File Upload</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
+    <div class="container py-sm-3">
+        <h1 class="display-4">File Upload</h1>
+        <form class="content-container mt-5 mx-auto" action="file-upload.php">
+            <div class="form-group">
+                <label for="image">Select File</label>
+                <input type="file" class="form-control-file" name="image">
+            </div>
 
-    <h1>File Upload</h1>
-    <form action="file-upload.php">
-        <input type="file" name="image">
-        <input type="submit" value="Upload">
-    </form>
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+            
+            <?php if($_QUERY['success'] === 'true'): ?>
+            <div class="alert alert-success" role="alert">
+                File uploaded successfully
+            </div>
+            <?php elseif($_QUERY['success'] === 'false'): ?>
+            <div class="alert alert-danger" role="alert">
+                Failed to upload file
+            </div>
+            <?php endif; ?>
+        </form>
+    </div>
 
-    <?php if($_QUERY['success'] === 'true'): ?>
-    <div class="alert alert-success" role="alert">
-        File uploaded successfully
-    </div>
-    <?php elseif($_QUERY['success'] === 'false'): ?>
-    <div class="alert alert-danger" role="alert">
-        Failed to upload file
-    </div>
-    <?php endif; ?>
 
     <!-- TODO List images -->
 
