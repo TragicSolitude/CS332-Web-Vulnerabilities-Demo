@@ -2,9 +2,28 @@
 
 <?php if (!empty($_FILES['image'])): ?>
     <?php
-        // Unrestricted file upload
-        $dest_path = 'images/' . basename($_FILES['image']['name']);
-        $success = move_uploaded_file($_FILES['image']['tmp_name'], $dest_path);
+        $target_dir = "images/";
+        $target_file = $target_dir . basename($_FILES["image"]["name"]);
+        $uploadOk = 1;
+        $success = 0;
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+        // Check file size
+        if ($_FILES["image"]["size"] > 50000000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+        // Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif" ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+
+        // Upload file
+        if ($uploadOk) {
+            $success = move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+        }
     ?>
     
     <?php if ($success): ?>
@@ -27,7 +46,7 @@
         <input type="file" class="form-control-file" name="image">
     </div>
 
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" name="submit" class="btn btn-primary">
         Submit
     </button>
     
