@@ -3,6 +3,7 @@
     $pages = [
         '/' => 'Home',
         '/file-upload.php' => 'File Upload',
+        '/user-enumeration.php' => 'User Enumeration'
         // ... Any additional demos
     ];
 ?>
