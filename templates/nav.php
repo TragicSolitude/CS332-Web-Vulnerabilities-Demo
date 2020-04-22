@@ -3,7 +3,8 @@
     $pages = [
         '/' => 'Home',
         '/file-upload.php' => 'File Upload',
-        '/user-enumeration.php' => 'User Enumeration'
+        '/user-enumeration.php' => 'User Enumeration',
+        '/XSS.php' => 'XSS Attack'
         // ... Any additional demos
     ];
 ?>
