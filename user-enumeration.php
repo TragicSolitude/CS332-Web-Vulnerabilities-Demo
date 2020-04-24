@@ -6,7 +6,7 @@
         'user2@email.com'
     ];
 
-    if($_POST['email']){
+    if(isset($_POST['email'])){
         sleep(1); // Go out to the database...
         if(in_array($_POST['email'], $valid_users)){
             sleep(1); // Sending email...
