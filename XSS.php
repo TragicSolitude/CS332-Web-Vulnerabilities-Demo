@@ -4,11 +4,11 @@
   header('X-XSS-Protection:0');
   $success = $username = $password = "";
   
-  if ($_POST){   
-    $username = $_POST["username"];
-    $password = $_POST["password"];   
+  if ($_GET){   
+    $username = $_GET["username"];
+    $password = $_GET["password"];   
     
-    if (!empty($_POST["username"])){
+    if (!empty($_GET["username"])){
       $success = "Good to see you again ".$username;
     }
   }
@@ -22,7 +22,7 @@
 <?php endif; ?>
 
 <h1 class="display-4">XSS Attack</h1>
-<form class="content-container mt-5 mx-auto" action="" method="post">
+<form class="content-container mt-5 mx-auto" action="" method="get">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="username">Username</label>
